@@ -1,10 +1,10 @@
-# gravityhunter
+#GravityHunter
 
 Eine Anleitung zur Formatierung von Github Wikis gibt es [hier](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
 Wie man Fußnoten für Quellen o. Ä. ergänzt, erfährt ihr [hier](http://stackoverflow.com/a/32119820/2426386).
 
-# Persistenz
+### Persistenz
 
 (wird ausformuliert...)
 Daten verfügbar über einen Programmneustart hinaus.
@@ -13,8 +13,8 @@ Daten verfügbar über einen Programmneustart hinaus.
 JSON Utility ist in Unity 5.3 [brandneu](http://blogs.unity3d.com/2015/12/08/unity-5-3-all-new-features-and-more-platforms/).
 Im Folgenden wird die Vorgehensweise beim Lesen bzw. beim Schreiben von Datenobjekten in JSON-Dateien, insbesondere Arrays, innerhalb Unity3D dokumentiert, sowohl mit der LitJson-Library als auch mit der neuen nativen JSON Utility in Unity3D.
 
-### JSON-Dateien in Unity schreiben
-#### Datenobjekten zu JSON-formatierten Text konvertieren
+#### JSON-Dateien in Unity schreiben
+##### Datenobjekten zu JSON-formatierten Text konvertieren
 
 Zur Erklärung der Vorgehensweise wird im Folgenden dieser String generiert, zuerst mit LitJson, dann mit JsonUtility:
 ```
@@ -63,7 +63,7 @@ public class JSONio01 : MonoBehaviour {
 	}
 }
 ```
-##### LitJson
+###### LitJson
 
 Auch unter der Verwendung der Bibliothek LitJson muss eine Klasse instanziiert werden und die Instanz mit Werten gefüllt werden:
 
@@ -108,21 +108,21 @@ public class JSONio06 : MonoBehaviour {
 }
 ```
 
-#### Sonderfall Arrays
-##### LitJson
-##### JsonUtility
-## Text-Datei schreiben
+##### Sonderfall Arrays
+###### LitJson
+###### JsonUtility
+### Text-Datei schreiben
 
-### JSON-Dateien in Unity lesen
-#### Text-Datei einlesen
-#### JSON-formatierten Text zu Datenobjekten konvertieren
-##### LitJson
-##### JsonUtility
-
-
+#### JSON-Dateien in Unity lesen
+##### Text-Datei einlesen
+##### JSON-formatierten Text zu Datenobjekten konvertieren
+###### LitJson
+###### JsonUtility
 
 
-# Networking
+
+
+## Networking
 
 Für moderne Computerspiele wird heute häufig ein Online-Server-Backend angelegt. Dafür sprechen einige Gründe, unter anderen:
 
@@ -137,7 +137,7 @@ Er hat folgende Funktionen:
 - Er hostet die Spieledatenbank
 - Er hastet eine Website, auf der die Spieler Accounts anlegen können und auch das Game spielen können
 
-### Einrichtung des Webservers
+#### Einrichtung des Webservers
 
 Der virtuelle Server hat das typische UNIX-übliche Dateisystem, wie es auch bei nicht-virtuellen UNIX-basierten Betriebssystemen wie Mac OS X und Linux-Distributionen der Fall ist. In dieses Verzeichnis können beliebige Serverkomponenten installiert werden. In unserem Fall werden Webserver-Tätigkeiten mit Node.js-Paketen bewerkstelligt. Node.js-Applikationen werden mit serverseitigem JavaScript konfiguriert und zeichnen durch ihre asynchrone Arbeitsweise im Singlethread sowie durch ihre Vielfalt an Möglichkeiten dank ihres stark modularen Aufbaus aus.
 Folgender Abschnitt beschreibt die Installation eines einfachen Node.js-Programms auf den virtuellen Webserver via SSH:
@@ -154,7 +154,7 @@ Vereinfacht funktioniert auch folgender Befehl zur Verbindung zum Server:
 ssh root@gravityhunter.mi.hdm-stuttgart.de
 ```
 
-#### Installation von Node.js
+##### Installation von Node.js
 Mit den Befehlen ```sudo apt-get install nodejs``` und ```sudo apt-get install npm```werden Node.js und der Node Package Manager installiert. Mit ```sudo ln -s /usr/bin/nodejs /usr/bin/node```wird ein Systemlink erstellt, sodass Node.js-Programme künftig mit dem Befehl ```node```gestartet werden können. 
 Zu Testzwecken wird eine simple Node.js-Applikation erstellt, bestehend aus den Dateien ```app.js``` und ``test.html```.
 Zunächst wird ein neues Verzeichnis erstellt: ```mkdir /root/helloworld```. Hier werden die beiden Dateien erstellt:
@@ -193,7 +193,7 @@ Auf [gravityhunter.mi.hdm-stuttgart.de](http://gravityhunter.mi.hdm-stuttgart.de
 
 Dieser Webserver ist allerdngs noch unbrauchbar, da er mit dem Ende der SSH-Verbindung ebenfalls beendet wird. Das liegt daran, dass dieser Prozess im Vordergrund des Linux-Betriebssystems läuft. Da der Webserver aber auch nach Ende der SSH-Verbindung funktionieren soll, muss für dieses Node.js-Programm ein Background-Prozess erstellt werden.
 
-#### Ausführung des Node.js-Webservers im Hintergrund mit systemd
+##### Ausführung des Node.js-Webservers im Hintergrund mit systemd
 
 Mit dem Linux-Programm systemd können beendete Programme automatisch neu gestartet werden. 
 Das im vorigen Schritt geöffnete Programm muss geöffnet bleiben! Die Installation von systemd erfolgt mit [folgenden Befehlen](https://wiki.debian.org/systemd):
@@ -230,7 +230,7 @@ Nun kann die SSH-Verbindung getrennt werden. Dann wird ```app.js```neu gestartet
 Wenn Änderungen am der Webserver-Applikation vorgenommen werden sollen, muss im Verzeichnis ```/etc/systemd/system```mit dem Befehl ```systemctl stop nodeserver.service```der Prozess zunächst beendet werden.
 Hilfreich waren die Posts [1](http://www.axllent.org/docs/view/nodejs-service-with-systemd/) und [2](http://blog.carbonfive.com/2014/06/02/node-js-in-production/).
 
-#### Dateien auf den Server kopieren
+##### Dateien auf den Server kopieren
 
 Entwickelt wird der Spieleserver auf einem lokalen Server. Die finalen Dateien werden über SSH an den virtuellen Server gesendet, unter Verwendung des Konsolenprogramms scp.
 
@@ -247,6 +247,7 @@ Der Kopiervorgang von der virtuellen Maschine zur lokalen Maschine funktioniert 
 scp root@gravityhunter.mi.hdm-stuttgart.de:/root/trashlog.txt /Users/Fabi/Desktop
 ```
 
+##Gameplay-Programmierung
 
 
 
@@ -254,7 +255,8 @@ Fußnote gefällig... <sup id="a1">[1](#f1)</sup>
 
 
 
-# Quellen
+## Quellen
+
 
 <b id="f1">1</b> Footnote content here. [↩](#a1)
 
